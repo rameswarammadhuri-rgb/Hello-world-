@@ -1,0 +1,21 @@
+class solution:
+    def genarate(self,curr_str,open,close,ans,n):
+        if(open+close == 2*n and open==close):
+            ans.append(curr_str)
+            return
+        if(open>n):
+            return
+        if(close>open):
+            return
+        self.genarate(curr_str+"(",open+1,close,ans,n)
+        self.genarate(curr_str+")",open,close+1,ans,n)
+    def generateparanthesis(self, n: int) -> list[str]:
+        curr_str = ""
+        ans = []
+        open = 0
+        close = 0
+        self.genarate(curr_str,open,close,ans,n)
+        return ans
+ob=solution()
+n=int(input())
+print(ob.generateparanthesis(n))
